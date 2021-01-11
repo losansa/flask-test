@@ -1,30 +1,30 @@
 from selling.model import QuotesName, Quote
 
 
-def convert_quotes_names_to_json(quotes_names):
-    return dict(map(convert_quote_name_to_json, quotes_names))
+def convert_quotes_names_to_dict(quotes_names):
+    return list(map(convert_quote_name_to_dict, quotes_names))
 
 
-def convert_quote_name_to_json(quote_name: QuotesName):
-    json_dict = {
+def convert_quote_name_to_dict(quote_name: QuotesName):
+    dictionary = {
         'id': quote_name.id,
         'name': quote_name.name
     }
-    json_dict['quotes'] = convert_quotes_to_json(quote_name.quotes)
-    return json_dict
+    dictionary['quotes'] = convert_quotes_to_dict(quote_name.quotes)
+    return dictionary
 
 
-def convert_quotes_to_json(quotes):
-    return dict(map(convert_quote_to_json, quotes))
+def convert_quotes_to_dict(quotes):
+    return list(map(convert_quote_to_dict, quotes))
 
 
-# def convert_quotes_to_json(quotes):
+# def convert_quotes_to_dict(quotes):
 #     arr = []
 #     for quote in quotes:
-#         arr.append(convert_quote_to_json(quote))
+#         arr.append(convert_quote_to_dict(quote))
 #     return arr
 
-def convert_quote_to_json(quote: Quote):
+def convert_quote_to_dict(quote: Quote):
     return {
         'id': quote.id,
         'date_time': quote.date_time,
