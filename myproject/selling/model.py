@@ -11,8 +11,13 @@ class QuotesName(db.Model):
 
 class Quote(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    min_value = db.Column(db.Float)
-    max_value = db.Column(db.Float)
-    name_id = db.Column(db.Integer,
+    date_time = db.Column(db.String(80), nullable=False)
+    q_open = db.Column(db.Float)
+    q_high = db.Column(db.Float)
+    q_low = db.Column(db.Float)
+    q_adj_close = db.Column(db.Float)
+    q_close = db.Column(db.Float)
+    q_volume = db.Column(db.Float)
+    q_name_id = db.Column(db.Integer,
                         db.ForeignKey('quotes_name.id', ondelete='CASCADE'),
                         nullable=False)
